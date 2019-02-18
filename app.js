@@ -15,10 +15,30 @@ rl.question(`Whats your name?`, function(name) {
 
 //checks string for equality
 function checkEqual(input){
-	if (input == 'jaja') {
-		return true;
+	console.log('Checking "' + input + '" for equality')
+
+	let stack = [];
+	for (const c of input) {
+		console.log(c);
+		if (c == '(') {
+			stack.push(c);
+		} else if (c == ')') {
+			if (stack.length == 0) {
+				return false;
+			} else {
+				stack.pop();
+			}
+		}
 	}
-	else {
+
+	console.log("stack: ");
+	console.log(stack);
+
+	if (stack.length === 0) {
+		return true;
+	} else {
 		return false;
 	}
-}
+
+
+} 
